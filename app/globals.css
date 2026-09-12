@@ -1655,6 +1655,42 @@ button {
   color: #715d65;
   font-size: 12px;
 }
+.closing-qr {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border: 2px solid #7d1535;
+  border-radius: 10px;
+  background: #fff;
+  color: #421425;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(68, 12, 33, 0.11);
+}
+.closing-qr:hover,
+.closing-qr:focus-visible {
+  background: #f9f0f3;
+  outline: 3px solid rgba(196, 146, 45, 0.45);
+}
+.closing-qr img {
+  width: 82px;
+  height: 82px;
+  border-radius: 5px;
+}
+.closing-qr > span {
+  display: grid;
+  gap: 4px;
+}
+.closing-qr strong {
+  color: #7d1535;
+  font-size: 17px;
+}
+.closing-qr small {
+  color: #715d65;
+  font-size: 11px;
+  line-height: 1.25;
+}
 .closing-vision-display {
   min-width: 0;
   min-height: 0;

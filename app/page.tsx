@@ -178,16 +178,19 @@ const lineMeta = {
     label: 'Automatización y Robótica',
     color: '#ffb000',
     short: 'Robótica',
+    icon: '🤖',
   },
   software: {
     label: 'Ingeniería de Software',
     color: '#15d4c5',
     short: 'Software',
+    icon: '💻',
   },
   educacion: {
     label: 'Sociedad del Conocimiento y Tecnologías aplicadas a la Educación',
     color: '#8b7cff',
     short: 'Educación',
+    icon: '🎓',
   },
 };
 
@@ -365,10 +368,10 @@ export default function Home() {
         </div>
         <div className="research-lines">
           <span>Líneas de investigación</span>
-          <strong>Automatización y Robótica</strong>
-          <strong>Ingeniería de Software</strong>
+          <strong>🤖 Automatización y Robótica</strong>
+          <strong>💻 Ingeniería de Software</strong>
           <strong>
-            Sociedad del Conocimiento y Tecnologías aplicadas a la Educación
+            🎓 Sociedad del Conocimiento y Tecnologías aplicadas a la Educación
           </strong>
         </div>
       </div>
@@ -532,7 +535,10 @@ export default function Home() {
               { '--line-color': lineMeta[line].color } as React.CSSProperties
             }
           >
-            <h3>{lineMeta[line].label}</h3>
+            <h3>
+              <span aria-hidden="true">{lineMeta[line].icon}</span>
+              {lineMeta[line].label}
+            </h3>
             <div>
               {projects
                 .filter((p) => p.line === line)
@@ -649,6 +655,25 @@ export default function Home() {
               <small>{copy}</small>
             </button>
           ))}
+          <a
+            className="closing-qr"
+            href="https://t.me/cateti2026_bot"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Abrir el bot CAETI 2026 en Telegram"
+          >
+            <Image
+              src="/cierre/telegram-caeti-qr.png"
+              alt="Código QR para acceder al bot CAETI 2026 en Telegram"
+              width={220}
+              height={220}
+              unoptimized
+            />
+            <span>
+              <strong>Consultá al CAETI</strong>
+              <small>Escaneá el QR · @cateti2026_bot</small>
+            </span>
+          </a>
         </div>
         <div className="closing-vision-display">
           {closingVision === 'fantasia' && (
