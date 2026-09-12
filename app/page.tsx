@@ -5,7 +5,6 @@ import {
   ArrowRight,
   Bot,
   Check,
-  ChevronRight,
   Clock3,
   Database,
   FileText,
@@ -29,6 +28,8 @@ type Project = {
   team: string;
   line: 'robotica' | 'software' | 'educacion';
   photo: string;
+  objective: string;
+  publications: string[];
   featured?: Array<{ name: string; photo: string }>;
 };
 
@@ -40,6 +41,11 @@ const projects: Project[] = [
     team: 'Carlos Niell · Fernando Armas · 6 alumnos',
     line: 'robotica',
     photo: '/investigadores/pedro-lopez.png',
+    objective:
+      'Desarrollar robots orientados a necesidades de personas con capacidades diferentes.',
+    publications: [
+      'Passerini, S., Tabelione, F., & López, P. (2026). Desarrollo de un sistema cibernético de asistencia: prótesis robótica basada en visión computacional y arquitectura distribuida. WICC 2026.',
+    ],
   },
   {
     code: 'TI/26/140',
@@ -49,6 +55,12 @@ const projects: Project[] = [
     team: 'Silvia Poncio · Soledad Ayala · Alejandro Hernández · María Andrea Guisen · 2 alumnos',
     line: 'software',
     photo: '/investigadores/alejandro-sartorio.png',
+    objective:
+      'Definir y validar un método sistemático, incremental y reproducible, basado en arquitectura de software, para transformar propiedades y capacidades en sistemas de gestión empresarial consolidados.',
+    publications: [
+      'Sartorio, A., & Rossi, G. (2026). Transformación de LMS a ALS utilizando una arquitectura de referencia. WICC 2026.',
+      'Sartorio, A., Ayala, S., & Hernández, A. (2025). Diseño de aplicaciones e-learning adaptativas: superando limitaciones mediante arquitecturas modulares y escalables. JAIIO 2025.',
+    ],
   },
   {
     code: 'TI/22/113',
@@ -58,6 +70,11 @@ const projects: Project[] = [
     team: 'Pablo Audoglio · Leonardo Prósperi · Claudia Pons · Jorge Kamlofsky · 5 alumnos · 2 graduados',
     line: 'software',
     photo: '/investigadores/alejandro-hernandez.png',
+    objective:
+      'Estudiar casos de uso para la tecnología Blockchain y su aporte a la transformación digital de las organizaciones.',
+    publications: [
+      'Jaime, F., Estelles, J. P., Lodato, M., Torassa Colombero, V., & Hernández, A. (2025). Modelos de micropagos descentralizados: una propuesta basada en blockchain para servicios digitales. CONAIISI 2025.',
+    ],
   },
   {
     code: 'TI/22/117',
@@ -66,6 +83,11 @@ const projects: Project[] = [
     team: 'Matías Banega · Sebastián Velázquez · Carlos Neil · Marcelo De Vincenzi Zemborain · 4 alumnos',
     line: 'software',
     photo: '/investigadores/alejandro-sartorio.png',
+    objective:
+      'Crear un módulo tecnológico, metodológico y funcional que brinde servicios de construcción y utilización de hojas de rutas de actividades educativas aplicadas al desarrollo de software.',
+    publications: [
+      'Castellini, G., Avella, L., Villa, L., & Sartorio, A. (en prensa). Hojas de rutas de aprendizajes basadas en metodología ágil. CONAIISI.',
+    ],
   },
   {
     code: 'TI/20/114',
@@ -74,6 +96,12 @@ const projects: Project[] = [
     team: 'Pedro López · María Eugenia Casco · 11 alumnos · 4 graduados',
     line: 'software',
     photo: '/investigadores/santiago-roatta.png',
+    objective:
+      'Proteger la infraestructura de las redes informáticas y sus componentes a través de la ciberseguridad.',
+    publications: [
+      'Roatta, S., Casco, M. E., & Torassa, V. (2025). Dockerización de servidores SCADA: ciberseguridad industrial. WICC.',
+      'Casco, M. E., & Roatta, S. E. (2025). Management of non-custodian digital evidence. Springer.',
+    ],
     featured: [
       {
         name: 'Santiago Roatta',
@@ -92,6 +120,12 @@ const projects: Project[] = [
     team: 'Cintia Cuña · Alejandro Sartorio · 3 alumnos',
     line: 'educacion',
     photo: '/investigadores/silvia-poncio.png',
+    objective:
+      'Diseñar, implementar y validar un data warehouse con IA que permita diagnosticar y visualizar el desarrollo de soft skills mediante indicadores para formación y talento humano.',
+    publications: [
+      'Poncio, S., Cuña, C., Cardú, N., & Ruiz, G. (2025). Data Warehouse Soft Skills: modelo diagnóstico. TEYET.',
+      'Bressan, C., et al. (2026). Modelo diagnóstico integral de competencias mediante BI e IA. WICC 2026.',
+    ],
   },
   {
     code: 'TI/25/128',
@@ -101,6 +135,12 @@ const projects: Project[] = [
     team: 'Claudia Pons · Christian Parkinson · Alejandro Sartorio · 3 alumnos',
     line: 'educacion',
     photo: '/investigadores/maria-andrea-guisen.png',
+    objective:
+      'Desarrollar una taxonomía de prompts que integre dimensiones estructurales, funcionales, contextuales y expresivas para optimizar la accesibilidad en escenarios académicos universitarios.',
+    publications: [
+      'Guisen, M. A., et al. (2026). El prompt como unidad crítica de accesibilidad. WICC 2026.',
+      'Acosta, M., et al. (2025). Accesibilidad y prompting en sistemas de IA conversacional. Revista RAIA.',
+    ],
   },
   {
     code: 'TI/25/129',
@@ -110,6 +150,12 @@ const projects: Project[] = [
     team: 'Claudia Pons · Christian Parkinson · Mauro Soto · Nadia Carolina Ksybala · 3 alumnos',
     line: 'educacion',
     photo: '/investigadores/maria-andrea-guisen.png',
+    objective:
+      'Identificar demandas emergentes de accesibilidad comunicacional y desarrollar soluciones informáticas de baja complejidad técnica y alto impacto social.',
+    publications: [
+      'Guisen, M. A., et al. (2026). Punto tecnológico para la accesibilidad de personas con síndrome de Rett. WICC 2026.',
+      'Garay Angulo, L., et al. (2025). Manual de accesibilidad digital. CLACSO.',
+    ],
   },
   {
     code: 'TI/22/111',
@@ -119,6 +165,12 @@ const projects: Project[] = [
     team: 'Alejandro Hernández · Juliana Carpinetti · Santiago Roatta · 3 alumnos',
     line: 'educacion',
     photo: '/investigadores/soledad-ayala.png',
+    objective:
+      'Analizar condiciones de usabilidad en plataformas educativas e identificar el comportamiento de las Web Content Accessibility Guidelines.',
+    publications: [
+      'Ayala, S., Sartorio, A., Hernández, A., Gaseli, J., & Dip, M. (2025). Educación superior, plataformas e IA. SIDS, 54 JAIIO.',
+      'Betta, L., Ayala, S., & Perren, M. (2025). Los materiales educativos digitales. RUEDA.',
+    ],
   },
 ];
 
@@ -241,7 +293,7 @@ export default function Home() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [evidenceIndex, setEvidenceIndex] = useState(0);
   const [seconds, setSeconds] = useState(0);
-  const total = 12;
+  const total = 11;
 
   useEffect(() => {
     const timer = window.setInterval(
@@ -558,38 +610,29 @@ export default function Home() {
       eyebrow="05 · ECOSISTEMA CAETI"
       title="Tres líneas articulan nueve proyectos de investigación"
     >
-      <div className="ecosystem">
-        <div className="ecosystem-core">
-          <Network />
-          <span>TI/26/140</span>
-          <strong>
-            Arquitectura
-            <br />
-            adaptativa
-          </strong>
-        </div>
-        {(Object.keys(lineMeta) as Array<keyof typeof lineMeta>).map(
-          (line, lineIndex) => (
-            <div
-              className={`line-cluster cluster-${lineIndex}`}
-              key={line}
-              style={
-                { '--line-color': lineMeta[line].color } as React.CSSProperties
-              }
-            >
-              <h3>{lineMeta[line].label}</h3>
-              <div>
-                {projects
-                  .filter((p) => p.line === line)
-                  .map((p) => (
-                    <button key={p.code} onClick={() => setSelected(p)}>
-                      {p.code}
-                    </button>
-                  ))}
-              </div>
+      <div className="unified-projects">
+        {(Object.keys(lineMeta) as Array<keyof typeof lineMeta>).map((line) => (
+          <div
+            className="line-cluster"
+            key={line}
+            style={
+              { '--line-color': lineMeta[line].color } as React.CSSProperties
+            }
+          >
+            <h3>{lineMeta[line].label}</h3>
+            <div>
+              {projects
+                .filter((p) => p.line === line)
+                .map((p) => (
+                  <button key={p.code} onClick={() => setSelected(p)}>
+                    <span>{p.code}</span>
+                    <strong>{p.title}</strong>
+                    <small>{p.director}</small>
+                  </button>
+                ))}
             </div>
-          ),
-        )}
+          </div>
+        ))}
       </div>
       <p className="interaction-hint">
         Seleccioná un proyecto para abrir su ficha
@@ -597,75 +640,47 @@ export default function Home() {
     </SlideShell>,
 
     <SlideShell
-      key="projects"
-      eyebrow="06 · PROYECTOS"
-      title="Cada iniciativa aporta conocimiento al entorno compartido"
-    >
-      <div className="project-list">
-        {projects.map((project) => (
-          <button
-            key={project.code}
-            onClick={() => setSelected(project)}
-            style={
-              {
-                '--line-color': lineMeta[project.line].color,
-              } as React.CSSProperties
-            }
-          >
-            <span className="project-code">{project.code}</span>
-            <strong>{project.title}</strong>
-            <span className="project-director">{project.director}</span>
-            <ChevronRight />
-          </button>
-        ))}
-      </div>
-    </SlideShell>,
-
-    <SlideShell
       key="hyperproductivity"
       eyebrow="07 · PROPIEDAD ADAPTATIVA"
       title="La hiperproductividad emerge al articular tres entornos"
     >
-      <div className="hyper-stage">
-        <div className="hyper-environment hyper-agents">
-          <Bot />
-          <span>01</span>
-          <strong>Entorno de agentes</strong>
-          <small>
-            Agentes personales y equipos especializados amplifican capacidades.
-          </small>
-        </div>
-        <div className="hyper-environment hyper-collab">
-          <MessageSquareText />
-          <span>02</span>
-          <strong>Trabajo colaborativo</strong>
-          <small>Canales tipo Slack o Buzz conectan a humanos y agentes.</small>
-        </div>
-        <div className="hyper-environment hyper-odoo">
-          <Database />
-          <span>03</span>
-          <strong>Plataforma de gestión</strong>
-          <small>
-            Odoo registra proyectos, tareas, documentos, decisiones y métricas.
-          </small>
-        </div>
-        <div className="hyper-core">
+      <div className="hyper-visuals">
+        {[
+          [
+            'agentes-personales.png',
+            'Agentes personales',
+            'Capacidades especializadas',
+          ],
+          [
+            'canales-colaborativos.jpg',
+            'Entorno colaborativo',
+            'Humanos y agentes en canales',
+          ],
+          [
+            'oficina-virtual.png',
+            'Gestión integrada',
+            'Procesos y trazabilidad',
+          ],
+        ].map(([src, label, copy]) => (
+          <figure key={src}>
+            <Image
+              src={`/hiperproductividad/${src}`}
+              alt={label}
+              width={720}
+              height={440}
+              unoptimized
+            />
+            <figcaption>
+              <strong>{label}</strong>
+              <span>{copy}</span>
+            </figcaption>
+          </figure>
+        ))}
+        <div className="hyper-result">
           <Sparkles />
-          <strong>
-            Hiper(n)
-            <br />
-            productividad
-          </strong>
-          <span>capacidad que escala ciclo tras ciclo</span>
+          <strong>Hiper(n)productividad</strong>
+          <span>una propiedad adaptativa que escala ciclo tras ciclo</span>
         </div>
-        <svg
-          className="hyper-lines"
-          viewBox="0 0 1000 470"
-          preserveAspectRatio="none"
-          aria-hidden="true"
-        >
-          <path d="M185 235 C275 100 370 105 500 235 C630 365 735 360 815 235 C690 75 310 75 185 235 Z" />
-        </svg>
       </div>
       <a
         className="hyper-link"
@@ -842,7 +857,19 @@ export default function Home() {
                 <dt>Equipo de investigación</dt>
                 <dd>{selected.team}</dd>
               </div>
+              <div>
+                <dt>Objetivo</dt>
+                <dd>{selected.objective}</dd>
+              </div>
             </dl>
+            <section className="modal-publications">
+              <h4>Publicaciones · formato APA</h4>
+              <ul>
+                {selected.publications.map((publication) => (
+                  <li key={publication}>{publication}</li>
+                ))}
+              </ul>
+            </section>
           </article>
         </dialog>
       )}
