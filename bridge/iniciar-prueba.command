@@ -14,5 +14,12 @@ if [[ -z "$TELEGRAM_BOT_TOKEN" ]]; then
   exit 1
 fi
 
-export TELEGRAM_BOT_TOKEN
-exec npm run bridge
+if ! security add-generic-password -U -a "$USER" -s caeti-telegram-bridge -w "$TELEGRAM_BOT_TOKEN" >/dev/null; then
+  print "No se pudo guardar el token en el Llavero de macOS."
+  unset TELEGRAM_BOT_TOKEN
+  exit 1
+fi
+
+unset TELEGRAM_BOT_TOKEN
+print "Token guardado de forma segura en el Llavero de macOS."
+print "Podés cerrar esta ventana y volver a Buzz."

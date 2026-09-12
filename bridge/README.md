@@ -27,7 +27,31 @@ echo
 npm run bridge
 ```
 
-El token queda solamente en la memoria de esa terminal. No se escribe en archivos. Para detener el puente, presionar `Ctrl+C`.
+El iniciador guarda el token en el Llavero de macOS con el servicio
+`caeti-telegram-bridge`. No se escribe en archivos del proyecto.
+
+El puente puede iniciarse desde un entorno autenticado de Buzz con:
+
+```bash
+TELEGRAM_BOT_TOKEN="$(security find-generic-password -a "$USER" -s caeti-telegram-bridge -w)" npm run bridge
+```
+
+Para detener el puente, presionar `Ctrl+C`.
+
+## Ejecución persistente en macOS
+
+La instalación persistente usa `launchd`, inicia el puente al abrir la sesión y
+lo reinicia si termina con error. Los secretos se leen desde el Llavero de
+macOS. En el piloto local se usa la identidad administrada de Fizz; para
+producción se recomienda reemplazarla por una identidad de servicio limitada al
+canal de consultas.
+
+Archivos:
+
+- `ejecutar-persistente.command`: carga secretos y ejecuta el puente.
+- `ar.edu.uai.caeti.telegram-bridge.plist`: definición del servicio.
+
+Los registros operativos quedan en `WORK_LOGS/CAETI_TELEGRAM_BRIDGE.*.log`.
 
 ## Variables opcionales
 

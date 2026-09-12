@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>ar.edu.uai.caeti.telegram-bridge</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/asartorio/.buzz/REPOS/sistemas-adaptativos-inteligentes/bridge/ejecutar-persistente.command</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>WorkingDirectory</key>
+  <string>/Users/asartorio/.buzz/REPOS/sistemas-adaptativos-inteligentes</string>
+  <key>StandardOutPath</key>
+  <string>/Users/asartorio/.buzz/WORK_LOGS/CAETI_TELEGRAM_BRIDGE.stdout.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/asartorio/.buzz/WORK_LOGS/CAETI_TELEGRAM_BRIDGE.stderr.log</string>
+</dict>
+</plist>
