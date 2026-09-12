@@ -200,26 +200,6 @@ const management = [
   ['Capacitación y entrenamiento', GraduationCap],
 ] as const;
 
-const evidence = [
-  ['equipo-caeti.png', 'Investigadores CAETI Rosario'],
-  ['dashboard-proyectos.png', 'Tablero de proyectos'],
-  ['dashboard-objetivos.png', 'Seguimiento de objetivos'],
-  ['formulario-incorporacion.png', 'Incorporación de participantes'],
-  ['odoo-aplicaciones.png', 'Aplicaciones de gestión integradas'],
-  ['crm-kanban.png', 'Flujo de incorporación en CRM'],
-  ['crm-investigador.png', 'Seguimiento de cada investigador'],
-  ['eventos.png', 'Gestión de eventos institucionales'],
-  ['proyectos-odoo.png', 'Cartera de proyectos en Odoo'],
-  ['proyecto-adaptativo-odoo.png', 'Proyecto troncal en operación'],
-  ['tareas-kanban.png', 'Tareas y verificaciones'],
-  ['entorno-colaborativo.png', 'Trabajo colaborativo con agentes'],
-  ['contactos.png', 'Gestión de investigadores y contactos'],
-  ['bot-telegram.png', 'Agentes disponibles desde Telegram'],
-  ['hoja-ruta.png', 'Hoja de ruta estratégica'],
-  ['objetivos-estrategicos.png', 'Objetivos y líneas de acción'],
-  ['alineacion-caeti.png', 'Alineación con el plan institucional'],
-] as const;
-
 function Brand() {
   return (
     <div className="brand" aria-label="CAETI UAI">
@@ -291,7 +271,6 @@ function Placeholder({ kind }: { kind: 'collab' | 'odoo' }) {
 export default function Home() {
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<Project | null>(null);
-  const [evidenceIndex, setEvidenceIndex] = useState(0);
   const [seconds, setSeconds] = useState(0);
   const total = 11;
 
@@ -443,56 +422,41 @@ export default function Home() {
 
     <SlideShell
       key="evidence"
-      eyebrow="PLATAFORMA EN OPERACIÓN"
-      title="El CAETI ya opera sobre procesos reales y trazables"
-      className="evidence-slide"
+      eyebrow="HIPER(N)PRODUCTIVIDAD"
+      title="Una capacidad que escala ciclo tras ciclo"
+      className="hyper-collage-slide"
     >
-      <div className="evidence-gallery">
-        <button
-          className="evidence-arrow previous"
-          onClick={() =>
-            setEvidenceIndex(
-              (evidenceIndex - 1 + evidence.length) % evidence.length,
-            )
-          }
-          aria-label="Evidencia anterior"
-        >
-          <ArrowLeft />
-        </button>
-        <figure>
-          <Image
-            src={`/evidencias/${evidence[evidenceIndex][0]}`}
-            alt={evidence[evidenceIndex][1]}
-            width={1902}
-            height={950}
-            unoptimized
-          />
-          <figcaption>
-            <span>
-              {String(evidenceIndex + 1).padStart(2, '0')} / {evidence.length}
-            </span>
-            <strong>{evidence[evidenceIndex][1]}</strong>
-          </figcaption>
-        </figure>
-        <button
-          className="evidence-arrow next"
-          onClick={() =>
-            setEvidenceIndex((evidenceIndex + 1) % evidence.length)
-          }
-          aria-label="Evidencia siguiente"
-        >
-          <ArrowRight />
-        </button>
-      </div>
-      <div className="evidence-dots">
-        {evidence.map((item, itemIndex) => (
-          <button
-            key={item[0]}
-            className={itemIndex === evidenceIndex ? 'active' : ''}
-            onClick={() => setEvidenceIndex(itemIndex)}
-            aria-label={`Ver ${item[1]}`}
-          />
+      <div className="hyper-collage">
+        {[
+          ['hiper7.jpeg', 'Ecosistema de hiperproductividad'],
+          ['agentes-personales.png', 'Agentes personales'],
+          ['swarms-equipos.png', 'Swarms y equipos especializados'],
+          ['canales-colaborativos.jpg', 'Canales colaborativos'],
+          ['cerebro-datos.png', 'Cerebro y datos organizacionales'],
+          ['tablero-productividad.png', 'Tablero de productividad'],
+        ].map(([src, label], collageIndex) => (
+          <figure
+            className={`collage-item collage-${collageIndex + 1}`}
+            key={src}
+          >
+            <Image
+              src={`/hiperproductividad/${src}`}
+              alt={label}
+              width={900}
+              height={560}
+              unoptimized
+            />
+            <figcaption>{label}</figcaption>
+          </figure>
         ))}
+      </div>
+      <div className="collage-equation">
+        <span>agentes</span>
+        <i>×</i>
+        <span>colaboración</span>
+        <i>×</i>
+        <span>gestión</span>
+        <strong>= capacidad ampliada</strong>
       </div>
     </SlideShell>,
 

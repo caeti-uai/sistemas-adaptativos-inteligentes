@@ -1579,6 +1579,80 @@ button {
   }
 }
 
+.hyper-collage {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.hyper-collage figure {
+  position: relative;
+  margin: 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px solid #e0d0d6;
+  background: #f5eff1;
+  box-shadow: 0 10px 26px rgba(78, 17, 40, 0.1);
+}
+.hyper-collage .collage-1 {
+  grid-row: 1 / 3;
+}
+.hyper-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.hyper-collage figcaption {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 10px 12px;
+  background: linear-gradient(transparent, rgba(55, 10, 28, 0.88));
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+}
+.collage-equation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 14px;
+  color: #5f102b;
+  font-size: clamp(15px, 1.4vw, 21px);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.collage-equation span {
+  padding: 7px 12px;
+  border-radius: 99px;
+  background: #f4e8ec;
+}
+.collage-equation i {
+  color: #c4922d;
+  font-style: normal;
+}
+.collage-equation strong {
+  color: #7d1535;
+}
+
+@media (max-width: 800px) {
+  .hyper-collage {
+    grid-template-columns: repeat(2, 1fr);
+    overflow-y: auto;
+  }
+  .hyper-collage .collage-1 {
+    grid-row: auto;
+  }
+  .collage-equation {
+    flex-wrap: wrap;
+  }
+}
+
 /* UAI institutional presentation theme */
 :root {
   --ink: #29151d;
