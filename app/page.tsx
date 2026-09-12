@@ -4,7 +4,6 @@ import {
   ArrowLeft,
   ArrowRight,
   Bot,
-  Check,
   Clock3,
   Database,
   FileText,
@@ -260,8 +259,11 @@ export default function Home() {
   const [selectedEvidence, setSelectedEvidence] = useState<
     (typeof evidence)[number] | null
   >(null);
+  const [closingVision, setClosingVision] = useState<
+    'fantasia' | 'caeti' | 'gemelos'
+  >('fantasia');
   const [seconds, setSeconds] = useState(0);
-  const total = 11;
+  const total = 10;
 
   useEffect(() => {
     const timer = window.setInterval(
@@ -639,69 +641,123 @@ export default function Home() {
       </a>
     </SlideShell>,
 
-    <SlideShell
-      key="journey"
-      eyebrow="08 · PARTICIPACIÓN"
-      title="La plataforma acompaña todo el recorrido de investigación"
-    >
-      <div className="journey">
-        {[
-          ['01', 'Convocatoria', 'Interés y preinscripción'],
-          ['02', 'Formación', 'Taller institucional y metodológico'],
-          ['03', 'Proyecto', 'Trabajo con dirección y equipo'],
-          ['04', 'Producción', 'Artículo, congreso o publicación'],
-          ['05', 'Reconocimiento', 'Beca, certificación y competencias'],
-        ].map(([number, title, copy], i) => (
-          <div className="journey-step" key={number}>
-            <span>{number}</span>
-            <i className={i < 4 ? 'active' : ''} />
-            <strong>{title}</strong>
-            <small>{copy}</small>
-          </div>
-        ))}
-      </div>
-      <div className="journey-callout">
-        <GraduationCap />
-        <p>
-          La gestión y la formación forman parte del mismo sistema experimental.
-        </p>
-      </div>
-    </SlideShell>,
-
-    <section className="closing" key="closing">
-      <div className="closing-network">
-        <i />
-        <i />
-        <i />
-        <i />
-        <i />
-      </div>
-      <span className="kicker">CAETI · 2026</span>
+    <section className="landing-closing" key="landing-closing">
+      <span className="kicker">10 · IA Y TRANSFORMACIÓN ORGANIZACIONAL</span>
       <h2>
-        Una arquitectura que se transforma mientras la comunidad investiga
+        <span>EL ATERRIZAJE DE LA</span>
+        <strong>
+          HIPER<sup>N</sup>PRODUCTIVIDAD
+        </strong>
       </h2>
       <p>
-        La plataforma integra proyectos, personas, agentes inteligentes y
-        procesos institucionales en un entorno común.
+        De la capacidad de la IA a su adopción efectiva en la última milla
+        organizacional.
       </p>
-      <div className="closing-actions">
-        <span>
-          <Check /> 9 proyectos
-        </span>
-        <span>
-          <Check /> 3 líneas de investigación
-        </span>
-        <span>
-          <Check /> 1 plataforma experimental
-        </span>
+      <div className="closing-vision-stage">
+        <div className="closing-vision-selector">
+          {[
+            [
+              'fantasia',
+              '01',
+              'La fantasía profesional',
+              'Humanos + robots en la oficina',
+            ],
+            [
+              'caeti',
+              '02',
+              'Lo que ya hacemos',
+              'El ecosistema experimental CAETI',
+            ],
+            [
+              'gemelos',
+              '03',
+              'La organización posible',
+              'Un investigador ↔ un agente gemelo',
+            ],
+          ].map(([value, number, title, copy]) => (
+            <button
+              className={closingVision === value ? 'active' : ''}
+              key={value}
+              onClick={() => setClosingVision(value as typeof closingVision)}
+            >
+              <b>{number}</b>
+              <span>{title}</span>
+              <small>{copy}</small>
+            </button>
+          ))}
+        </div>
+        <div className="closing-vision-display">
+          {closingVision === 'fantasia' && (
+            <figure>
+              <Image
+                src="/cierre/colaboracion-profesional-humanos-robots.jpg"
+                alt="Profesionales y robots colaborando en una oficina"
+                width={1400}
+                height={1400}
+                unoptimized
+              />
+              <figcaption>
+                <b>IMAGINARIO COLECTIVO</b>
+                <strong>
+                  La oficina conocida incorpora nuevos compañeros digitales
+                </strong>
+                <span>
+                  Procesos estandarizados · roles reconocibles · convivencia
+                  humano–robot
+                </span>
+              </figcaption>
+            </figure>
+          )}
+          {closingVision === 'caeti' && (
+            <div className="caeti-vision">
+              <div>
+                {[
+                  'cerebro-datos.png',
+                  'terminal-agentes.png',
+                  'canales-colaborativos.jpg',
+                ].map((src) => (
+                  <Image
+                    key={src}
+                    src={`/hiperproductividad/${src}`}
+                    alt="Ecosistema tecnológico CAETI"
+                    width={620}
+                    height={390}
+                    unoptimized
+                  />
+                ))}
+              </div>
+              <strong>CAETI</strong>
+              <span>agentes · canales · gestión · datos · investigación</span>
+            </div>
+          )}
+          {closingVision === 'gemelos' && (
+            <div className="twin-vision">
+              <article>
+                <span>👤</span>
+                <b>Investigador</b>
+                <small>Objetivos · criterio · autoridad</small>
+              </article>
+              <i>↔</i>
+              <article className="twin-core">
+                <span>◎</span>
+                <b>Agente gemelo</b>
+                <small>Contexto · coordinación · memoria</small>
+              </article>
+              <i>→</i>
+              <div>
+                <span>👥 Humanos</span>
+                <span>🤖 Agentes</span>
+                <span>⚙️ Sistemas</span>
+                <span>📚 Proyectos</span>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      <a
-        href="https://nbapi.uai.edu.ar/convocatorias/"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Conocer las convocatorias <ArrowRight />
-      </a>
+      <div className="closing-vision-feedback">
+        Una arquitectura adaptativa convierte capacidades tecnológicas en una
+        nueva forma de investigar, colaborar y gestionar.
+      </div>
     </section>,
   ];
 
