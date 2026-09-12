@@ -6,7 +6,6 @@ import {
   Bot,
   Check,
   ChevronRight,
-  CircleUserRound,
   Clock3,
   Database,
   FileText,
@@ -30,6 +29,7 @@ type Project = {
   team: string;
   line: 'robotica' | 'software' | 'educacion';
   photo: string;
+  featured?: Array<{ name: string; photo: string }>;
 };
 
 const projects: Project[] = [
@@ -74,6 +74,16 @@ const projects: Project[] = [
     team: 'Pedro López · María Eugenia Casco · 11 alumnos · 4 graduados',
     line: 'software',
     photo: '/investigadores/santiago-roatta.png',
+    featured: [
+      {
+        name: 'Santiago Roatta',
+        photo: '/investigadores/santiago-roatta.png',
+      },
+      {
+        name: 'María Eugenia Casco',
+        photo: '/investigadores/maria-eugenia-casco.png',
+      },
+    ],
   },
   {
     code: 'TI/26/139',
@@ -501,39 +511,59 @@ export default function Home() {
     </SlideShell>,
 
     <SlideShell
-      key="actors"
-      eyebrow="07 · COMUNIDAD AUMENTADA"
-      title="Personas y agentes trabajan sobre el mismo espacio institucional"
+      key="hyperproductivity"
+      eyebrow="07 · PROPIEDAD ADAPTATIVA"
+      title="La hiperproductividad emerge al articular tres entornos"
     >
-      <div className="actors-stage">
-        <div className="actor human">
-          <CircleUserRound />
-          <strong>Investigadores</strong>
-          <span>definen, validan y producen conocimiento</span>
-        </div>
-        <div className="actor students">
-          <GraduationCap />
-          <strong>Estudiantes y graduados</strong>
-          <span>se forman mientras participan</span>
-        </div>
-        <div className="shared-work">
-          <Network />
-          <span>Espacio compartido</span>
-          <i />
-          <i />
-          <i />
-        </div>
-        <div className="actor agents">
+      <div className="hyper-stage">
+        <div className="hyper-environment hyper-agents">
           <Bot />
-          <strong>Agentes inteligentes</strong>
-          <span>asisten, automatizan y conectan información</span>
+          <span>01</span>
+          <strong>Entorno de agentes</strong>
+          <small>
+            Agentes personales y equipos especializados amplifican capacidades.
+          </small>
         </div>
-        <div className="actor management">
+        <div className="hyper-environment hyper-collab">
+          <MessageSquareText />
+          <span>02</span>
+          <strong>Trabajo colaborativo</strong>
+          <small>Canales tipo Slack o Buzz conectan a humanos y agentes.</small>
+        </div>
+        <div className="hyper-environment hyper-odoo">
           <Database />
-          <strong>Gestión institucional</strong>
-          <span>formaliza y sostiene los procesos</span>
+          <span>03</span>
+          <strong>Plataforma de gestión</strong>
+          <small>
+            Odoo registra proyectos, tareas, documentos, decisiones y métricas.
+          </small>
         </div>
+        <div className="hyper-core">
+          <Sparkles />
+          <strong>
+            Hiper(n)
+            <br />
+            productividad
+          </strong>
+          <span>capacidad que escala ciclo tras ciclo</span>
+        </div>
+        <svg
+          className="hyper-lines"
+          viewBox="0 0 1000 470"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path d="M185 235 C275 100 370 105 500 235 C630 365 735 360 815 235 C690 75 310 75 185 235 Z" />
+        </svg>
       </div>
+      <a
+        className="hyper-link"
+        href="https://hiperprodu.asartorio.online/"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Explorar Hiperproductividad <ArrowRight />
+      </a>
     </SlideShell>,
 
     <SlideShell
@@ -673,14 +703,24 @@ export default function Home() {
             </button>
             <span className="modal-line">{lineMeta[selected.line].label}</span>
             <span className="modal-code">{selected.code}</span>
-            <Image
-              className="director-photo"
-              src={selected.photo}
-              alt={`Retrato de ${selected.director}`}
-              width={164}
-              height={164}
-              unoptimized
-            />
+            <div className="featured-people">
+              {(
+                selected.featured ?? [
+                  { name: selected.director, photo: selected.photo },
+                ]
+              ).map((person) => (
+                <figure key={person.name}>
+                  <Image
+                    src={person.photo}
+                    alt={`Retrato de ${person.name}`}
+                    width={164}
+                    height={164}
+                    unoptimized
+                  />
+                  <figcaption>{person.name}</figcaption>
+                </figure>
+              ))}
+            </div>
             <h3>{selected.title}</h3>
             <dl>
               <div>
