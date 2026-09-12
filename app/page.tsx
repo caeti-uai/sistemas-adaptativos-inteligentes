@@ -200,6 +200,10 @@ const management = [
 ] as const;
 
 const evidence = [
+  [
+    'arquitectura-humano-agente.png',
+    'Agentes especializados trabajando en paralelo',
+  ],
   ['equipo-caeti.png', 'Investigadores CAETI Rosario'],
   ['dashboard-proyectos.png', 'Tablero de proyectos'],
   ['dashboard-objetivos.png', 'Seguimiento de objetivos'],
@@ -263,7 +267,7 @@ export default function Home() {
     'fantasia' | 'caeti' | 'gemelos'
   >('fantasia');
   const [seconds, setSeconds] = useState(0);
-  const total = 10;
+  const total = 9;
 
   useEffect(() => {
     const timer = window.setInterval(
@@ -412,46 +416,6 @@ export default function Home() {
       <p className="big-question">
         ¿Cómo transformar lo que ya funciona sin empezar de cero?
       </p>
-    </SlideShell>,
-
-    <SlideShell
-      key="evidence"
-      eyebrow="HIPER(N)PRODUCTIVIDAD"
-      title="Una capacidad que escala ciclo tras ciclo"
-      className="hyper-collage-slide"
-    >
-      <div className="hyper-collage">
-        {[
-          ['hiper7.jpeg', 'Ecosistema de hiperproductividad'],
-          ['agentes-personales.png', 'Agentes personales'],
-          ['swarms-equipos.png', 'Swarms y equipos especializados'],
-          ['canales-colaborativos.jpg', 'Canales colaborativos'],
-          ['cerebro-datos.png', 'Cerebro y datos organizacionales'],
-          ['tablero-productividad.png', 'Tablero de productividad'],
-        ].map(([src, label], collageIndex) => (
-          <figure
-            className={`collage-item collage-${collageIndex + 1}`}
-            key={src}
-          >
-            <Image
-              src={`/hiperproductividad/${src}`}
-              alt={label}
-              width={900}
-              height={560}
-              unoptimized
-            />
-            <figcaption>{label}</figcaption>
-          </figure>
-        ))}
-      </div>
-      <div className="collage-equation">
-        <span>agentes</span>
-        <i>×</i>
-        <span>colaboración</span>
-        <i>×</i>
-        <span>gestión</span>
-        <strong>= capacidad ampliada</strong>
-      </div>
     </SlideShell>,
 
     <SlideShell

@@ -1834,8 +1834,8 @@ button {
   box-shadow: 0 12px 28px rgba(71, 18, 38, 0.2);
 }
 .evidence-mosaic button:first-child {
-  grid-row: span 2;
-  grid-column: span 2;
+  grid-row: auto;
+  grid-column: auto;
 }
 .evidence-mosaic img {
   width: 100%;
