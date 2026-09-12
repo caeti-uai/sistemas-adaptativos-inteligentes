@@ -9,6 +9,8 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "start": "wrangler dev --config dist/server/wrangler.json",
+    "bridge": "node bridge/index.mjs",
+    "bridge:check": "node --check bridge/index.mjs",
     "lint": "oxlint",
     "format": "oxfmt"
   },
