@@ -200,6 +200,26 @@ const management = [
   ['Capacitación y entrenamiento', GraduationCap],
 ] as const;
 
+const evidence = [
+  ['equipo-caeti.png', 'Investigadores CAETI Rosario'],
+  ['dashboard-proyectos.png', 'Tablero de proyectos'],
+  ['dashboard-objetivos.png', 'Seguimiento de objetivos'],
+  ['formulario-incorporacion.png', 'Incorporación de participantes'],
+  ['odoo-aplicaciones.png', 'Aplicaciones de gestión integradas'],
+  ['crm-kanban.png', 'Flujo de incorporación en CRM'],
+  ['crm-investigador.png', 'Seguimiento de cada investigador'],
+  ['eventos.png', 'Gestión de eventos institucionales'],
+  ['proyectos-odoo.png', 'Cartera de proyectos en Odoo'],
+  ['proyecto-adaptativo-odoo.png', 'Proyecto troncal en operación'],
+  ['tareas-kanban.png', 'Tareas y verificaciones'],
+  ['entorno-colaborativo.png', 'Trabajo colaborativo con agentes'],
+  ['contactos.png', 'Gestión de investigadores y contactos'],
+  ['bot-telegram.png', 'Agentes disponibles desde Telegram'],
+  ['hoja-ruta.png', 'Hoja de ruta estratégica'],
+  ['objetivos-estrategicos.png', 'Objetivos y líneas de acción'],
+  ['alineacion-caeti.png', 'Alineación con el plan institucional'],
+] as const;
+
 function Brand() {
   return (
     <div className="brand" aria-label="CAETI UAI">
@@ -234,43 +254,12 @@ function SlideShell({
   );
 }
 
-function Placeholder({ kind }: { kind: 'collab' | 'odoo' }) {
-  const isCollab = kind === 'collab';
-  return (
-    <div className={`capture-placeholder ${kind}`}>
-      <div className="placeholder-toolbar">
-        <i />
-        <i />
-        <i />
-        <span>
-          {isCollab ? 'Entorno colaborativo' : 'Plataforma de gestión'}
-        </span>
-      </div>
-      <Image
-        src={
-          isCollab
-            ? '/capturas/entorno-colaborativo.png'
-            : '/capturas/odoo-proyectos.png'
-        }
-        alt={
-          isCollab
-            ? 'Personas y agentes conversando en el entorno colaborativo'
-            : 'Proyectos de investigación gestionados en Odoo'
-        }
-        width={1200}
-        height={760}
-        unoptimized
-      />
-      <span className="capture-tag">
-        {isCollab ? 'Humanos + agentes' : 'Proyectos + procesos'}
-      </span>
-    </div>
-  );
-}
-
 export default function Home() {
   const [index, setIndex] = useState(0);
   const [selected, setSelected] = useState<Project | null>(null);
+  const [selectedEvidence, setSelectedEvidence] = useState<
+    (typeof evidence)[number] | null
+  >(null);
   const [seconds, setSeconds] = useState(0);
   const total = 11;
 
@@ -284,11 +273,14 @@ export default function Home() {
 
   const go = useCallback((next: number) => {
     setSelected(null);
+    setSelectedEvidence(null);
     setIndex(Math.max(0, Math.min(total - 1, next)));
   }, []);
 
   useEffect(() => {
     const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedEvidence)
+        return setSelectedEvidence(null);
       if (event.key === 'Escape' && selected) return setSelected(null);
       if (
         event.key === 'ArrowRight' ||
@@ -302,7 +294,7 @@ export default function Home() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [go, index, selected]);
+  }, [go, index, selected, selectedEvidence]);
 
   const time = useMemo(
     () =>
@@ -508,34 +500,25 @@ export default function Home() {
     <SlideShell
       key="platform"
       eyebrow="03 · PLATAFORMA EXPERIMENTAL"
-      title="La investigación sucede en un entorno real de trabajo"
+      title="Un entorno real, observable y trazable"
+      className="evidence-mosaic-slide"
     >
-      <div className="dual-platform">
-        <div>
-          <span className="platform-label">
-            <UsersRound /> Colaboración
-          </span>
-          <Placeholder kind="collab" />
-        </div>
-        <div className="platform-bridge">
-          <span>
-            arquitectura
-            <br />
-            adaptativa
-          </span>
-          <i />
-        </div>
-        <div>
-          <span className="platform-label">
-            <Database /> Gestión
-          </span>
-          <Placeholder kind="odoo" />
-        </div>
+      <div className="evidence-mosaic">
+        {evidence.map((item, itemIndex) => (
+          <button key={item[0]} onClick={() => setSelectedEvidence(item)}>
+            <Image
+              src={`/evidencias/${item[0]}`}
+              alt={item[1]}
+              width={520}
+              height={310}
+              unoptimized
+            />
+            <span>{String(itemIndex + 1).padStart(2, '0')}</span>
+            <strong>{item[1]}</strong>
+          </button>
+        ))}
       </div>
-      <p className="slide-caption">
-        Personas y agentes investigan, toman decisiones y ejecutan procesos
-        sobre una infraestructura común.
-      </p>
+      <p className="interaction-hint">Seleccioná una imagen para ampliarla</p>
     </SlideShell>,
 
     <SlideShell
@@ -835,6 +818,36 @@ export default function Home() {
               </ul>
             </section>
           </article>
+        </dialog>
+      )}
+      {selectedEvidence && (
+        <dialog
+          open
+          className="evidence-lightbox"
+          aria-label={selectedEvidence[1]}
+        >
+          <button
+            className="modal-backdrop"
+            onClick={() => setSelectedEvidence(null)}
+            aria-label="Cerrar imagen"
+          />
+          <figure>
+            <button
+              className="modal-close"
+              onClick={() => setSelectedEvidence(null)}
+              aria-label="Cerrar"
+            >
+              <X />
+            </button>
+            <Image
+              src={`/evidencias/${selectedEvidence[0]}`}
+              alt={selectedEvidence[1]}
+              width={1902}
+              height={950}
+              unoptimized
+            />
+            <figcaption>{selectedEvidence[1]}</figcaption>
+          </figure>
         </dialog>
       )}
     </main>

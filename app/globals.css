@@ -1579,6 +1579,133 @@ button {
   }
 }
 
+.evidence-mosaic {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.evidence-mosaic button {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #dac8cf;
+  border-radius: 7px;
+  background: #eee4e8;
+  cursor: zoom-in;
+  box-shadow: 0 5px 14px rgba(71, 18, 38, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.evidence-mosaic button:hover {
+  z-index: 2;
+  transform: scale(1.035);
+  box-shadow: 0 12px 28px rgba(71, 18, 38, 0.2);
+}
+.evidence-mosaic button:first-child {
+  grid-row: span 2;
+  grid-column: span 2;
+}
+.evidence-mosaic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.evidence-mosaic button > span {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: rgba(125, 21, 53, 0.92);
+  color: #fff;
+  font:
+    700 10px ui-monospace,
+    monospace;
+}
+.evidence-mosaic button > strong {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 18px 8px 7px;
+  background: linear-gradient(transparent, rgba(49, 10, 25, 0.9));
+  color: #fff;
+  font-size: 11px;
+  line-height: 1.1;
+  text-align: left;
+}
+.evidence-lightbox {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  padding: 28px;
+  border: 0;
+  background: rgba(43, 8, 21, 0.82);
+  backdrop-filter: blur(9px);
+}
+.evidence-lightbox figure {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: min(1500px, 94vw);
+  max-height: 91vh;
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+}
+.evidence-lightbox figure > img {
+  max-width: 100%;
+  max-height: 82vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.evidence-lightbox figcaption {
+  padding: 14px 20px;
+  color: #5f102b;
+  font-size: 20px;
+  font-weight: 700;
+}
+.evidence-lightbox .modal-close {
+  z-index: 2;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #7d1535;
+  color: #fff;
+  display: grid;
+  place-items: center;
+}
+
+@media (max-width: 800px) {
+  .evidence-mosaic {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: none;
+    overflow-y: auto;
+  }
+  .evidence-mosaic button {
+    min-height: 130px;
+  }
+  .evidence-mosaic button:first-child {
+    grid-row: auto;
+    grid-column: auto;
+  }
+}
+
 .hyper-collage {
   flex: 1;
   min-height: 0;
