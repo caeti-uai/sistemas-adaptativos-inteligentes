@@ -270,7 +270,7 @@ export default function Home() {
     'fantasia' | 'caeti' | 'gemelos'
   >('fantasia');
   const [seconds, setSeconds] = useState(0);
-  const total = 9;
+  const total = 10;
 
   useEffect(() => {
     const timer = window.setInterval(
