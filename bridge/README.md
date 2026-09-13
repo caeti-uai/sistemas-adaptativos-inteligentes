@@ -53,6 +53,20 @@ Archivos:
 
 Los registros operativos quedan en `WORK_LOGS/CAETI_TELEGRAM_BRIDGE.*.log`.
 
+### Control sencillo
+
+Abrir con doble clic `bridge/controlar-bot.command` y elegir una opción del
+menú para consultar el estado, reiniciar el puente o revisar los registros. No
+solicita ni muestra credenciales.
+
+También puede usarse desde la raíz del repositorio:
+
+```bash
+./bridge/controlar-bot.command estado
+./bridge/controlar-bot.command reiniciar
+./bridge/controlar-bot.command registros
+```
+
 ## Variables opcionales
 
 - `TELEGRAM_BOT_USERNAME` (predeterminado: `cateti2026_bot`)
