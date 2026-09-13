@@ -822,6 +822,22 @@ export default function Home() {
     <main className="presentation-app">
       <header className="topbar">
         <Brand />
+        <a
+          className="ciiti-brand"
+          href="https://www.uai.edu.ar/ciiti/2026/buenos-aires/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="CIITI 2026"
+        >
+          <Image
+            src="/ciiti-2026.png"
+            alt="CIITI 2026"
+            width={350}
+            height={74}
+            unoptimized
+            priority
+          />
+        </a>
         <div className="topbar-meta">
           <span>
             <Clock3 /> {time}
