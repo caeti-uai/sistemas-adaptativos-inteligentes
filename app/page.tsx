@@ -601,6 +601,23 @@ export default function Home() {
           <span>una propiedad adaptativa que escala ciclo tras ciclo</span>
         </div>
       </div>
+      <div
+        className="hyper-concepts"
+        aria-label="Componentes del entorno adaptativo"
+      >
+        {[
+          ['⚙️', 'Proceso'],
+          ['👤', 'Humano'],
+          ['🤖', 'Robot'],
+          ['🛠️', 'Soporte Tech'],
+          ['🧩', 'Ambiente de trabajo'],
+        ].map(([icon, label]) => (
+          <div key={label}>
+            <span aria-hidden="true">{icon}</span>
+            <strong>{label}</strong>
+          </div>
+        ))}
+      </div>
       <a
         className="hyper-link"
         href="https://hiperprodu.asartorio.online/"
@@ -746,6 +763,57 @@ export default function Home() {
       <div className="closing-vision-feedback">
         Una arquitectura adaptativa convierte capacidades tecnológicas en una
         nueva forma de investigar, colaborar y gestionar.
+      </div>
+    </section>,
+
+    <section className="thanks-slide" key="thanks">
+      <div className="thanks-copy">
+        <span className="kicker">CAETI · FTI ROSARIO · 2026</span>
+        <h2>Gracias.</h2>
+        <p>Nos vemos en estos lugares:</p>
+      </div>
+      <div className="thanks-destinations">
+        <a
+          className="thanks-telegram"
+          href="https://t.me/cateti2026_bot"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <Image
+            src="/cierre/telegram-caeti-qr.png"
+            alt="Código QR para acceder al bot CAETI 2026"
+            width={520}
+            height={520}
+            unoptimized
+          />
+          <div>
+            <span>01 · SEGUIMOS CONVERSANDO</span>
+            <strong>
+              En la Hiper<sup>N</sup>productividad del CAETI
+            </strong>
+            <small>Escaneá el QR · @cateti2026_bot</small>
+          </div>
+        </a>
+        <a
+          className="thanks-jinzo"
+          href="https://jinzo.app/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>02 · UNA INVITACIÓN</span>
+          <Image
+            src="/cierre/jinzo-by-hitofusion.png"
+            alt="Jinzo, una plataforma de HitoFusion"
+            width={619}
+            height={160}
+            unoptimized
+          />
+          <strong>Conocé Jinzo de HitoFusion</strong>
+          <small>Agentes de IA conectados a procesos reales</small>
+          <b>
+            Visitar jinzo.app <ArrowRight />
+          </b>
+        </a>
       </div>
     </section>,
   ];
