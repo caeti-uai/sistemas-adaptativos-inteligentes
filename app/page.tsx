@@ -12,6 +12,8 @@ import {
   MessageSquareText,
   Network,
   Presentation,
+  Play,
+  RotateCcw,
   ShieldCheck,
   Sparkles,
   UsersRound,
@@ -202,6 +204,51 @@ const management = [
   ['Capacitación y entrenamiento', GraduationCap],
 ] as const;
 
+const transformationSteps = [
+  {
+    number: '0',
+    label: 'AS-IS',
+    detail: 'Sistema no adaptativo',
+    kind: 'event',
+  },
+  {
+    number: '1',
+    label: 'Analizar',
+    detail: 'Arquitectura de origen',
+    kind: 'task',
+  },
+  {
+    number: '2',
+    label: 'Generalizar',
+    detail: 'Estructura arquitectónica',
+    kind: 'task',
+  },
+  {
+    number: '3',
+    label: 'Mapear',
+    detail: 'Tabla de cobertura',
+    kind: 'rules',
+  },
+  {
+    number: '4',
+    label: 'Referenciar',
+    detail: 'Arquitectura adaptativa',
+    kind: 'task',
+  },
+  {
+    number: '5',
+    label: 'Transformar',
+    detail: 'Incorporar y modificar',
+    kind: 'task',
+  },
+  {
+    number: '6',
+    label: 'TO-BE',
+    detail: 'Sistema más adaptativo',
+    kind: 'event',
+  },
+] as const;
+
 const evidence = [
   [
     'arquitectura-humano-agente.png',
@@ -270,6 +317,8 @@ export default function Home() {
     'fantasia' | 'caeti' | 'gemelos'
   >('fantasia');
   const [seconds, setSeconds] = useState(0);
+  const [transformationStep, setTransformationStep] = useState(0);
+  const [transformationPlaying, setTransformationPlaying] = useState(false);
   const total = 10;
 
   useEffect(() => {
@@ -279,6 +328,20 @@ export default function Home() {
     );
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!transformationPlaying || index !== 3) return;
+    const timer = window.setInterval(() => {
+      setTransformationStep((step) => {
+        if (step >= transformationSteps.length - 1) {
+          setTransformationPlaying(false);
+          return step;
+        }
+        return step + 1;
+      });
+    }, 1500);
+    return () => window.clearInterval(timer);
+  }, [index, transformationPlaying]);
 
   const go = useCallback((next: number) => {
     setSelected(null);
@@ -463,6 +526,70 @@ export default function Home() {
             </div>
           </dl>
         </div>
+      </div>
+      <div
+        className="transformation-process"
+        aria-label="Proceso de transformación arquitectónica"
+      >
+        <div className="process-heading">
+          <span>Proceso de transformación</span>
+          <button
+            type="button"
+            onClick={() => {
+              if (transformationStep === transformationSteps.length - 1) {
+                setTransformationStep(0);
+              }
+              setTransformationPlaying(true);
+            }}
+          >
+            {transformationStep === transformationSteps.length - 1 ? (
+              <RotateCcw />
+            ) : (
+              <Play />
+            )}
+            {transformationStep === transformationSteps.length - 1
+              ? 'Repetir recorrido'
+              : 'Recorrer proceso'}
+          </button>
+        </div>
+        <div className="bpmn-flow">
+          {transformationSteps.map((step, stepIndex) => (
+            <div className="bpmn-segment" key={step.number}>
+              <button
+                type="button"
+                className={`bpmn-node ${step.kind} ${
+                  stepIndex === transformationStep ? 'active' : ''
+                } ${stepIndex < transformationStep ? 'complete' : ''}`}
+                onClick={() => {
+                  setTransformationPlaying(false);
+                  setTransformationStep(stepIndex);
+                }}
+                aria-current={
+                  stepIndex === transformationStep ? 'step' : undefined
+                }
+              >
+                <span>{step.number}</span>
+                <strong>{step.label}</strong>
+                <small>{step.detail}</small>
+              </button>
+              {stepIndex < transformationSteps.length - 1 && (
+                <div
+                  className={`bpmn-connector ${
+                    stepIndex < transformationStep ? 'complete' : ''
+                  }`}
+                  aria-hidden="true"
+                >
+                  <i />
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+        <p className="process-narration">
+          <span>{transformationSteps[transformationStep].number}</span>
+          <strong>{transformationSteps[transformationStep].label}</strong>
+          {transformationSteps[transformationStep].detail}
+        </p>
       </div>
     </SlideShell>,
 
